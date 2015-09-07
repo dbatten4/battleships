@@ -11,6 +11,13 @@ describe Board do
     expect(ship.hit).to eq(true)
   end
 
+  it 'reports missed hit when no ship at position' do
+    ship = Ship.new
+    subject.place(ship)
+    expect(subject.receive_hit("A2")).to eq(:miss)
+  end
+
+
 end
 
 
