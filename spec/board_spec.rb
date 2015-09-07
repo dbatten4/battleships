@@ -1,5 +1,11 @@
 require 'board'
 
+  # reports missed hit when no ship at position /
+  # can have a ship /
+  # can receive a hit on a ship /
+  # can report if all ships are sunk /
+  # can report if not all ships are sunk /
+
 describe Board do 
 
   it { is_expected.to respond_to(:place).with(1).argument }
@@ -15,6 +21,19 @@ describe Board do
     ship = Ship.new
     subject.place(ship)
     expect(subject.receive_hit("A2")).to eq(:miss)
+  end
+
+  it 'can report if all ships are sunk' do
+    ship = Ship.new
+    subject.place(ship)
+    subject.receive_hit("A1")
+    expect(subject.all_sunk?).to eq(true)
+  end
+
+  it 'can report if not all ships are sunk' do
+    ship = Ship.new
+    subject.place(ship)
+    expect(subject.all_sunk?).to eq(false)
   end
 
 

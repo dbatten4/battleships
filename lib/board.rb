@@ -21,6 +21,13 @@ class Board
     end
   end
 
+  def all_sunk?
+    @ships.each do |ship|
+      return false if ship.hit == false
+    end
+    true
+  end
+
 
 end
 
