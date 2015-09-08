@@ -9,16 +9,22 @@ class Board
   end
 
   def place(ship)
-    @ships << ship 
+    @ships << ship
   end
 
   def receive_hit(hit_position)
     @ships.each do |ship|
       if ship.position == hit_position
          ship.hit = true
-         return :hit
+         ships.delete(ship)
+         ship.get_hit
+         if ship.hit_counter < ship.size
+            return :hit
+          else
+            return :sunk
+          end
        else
-        return :miss
+          return :miss
       end
     end
   end

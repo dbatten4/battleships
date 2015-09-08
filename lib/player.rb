@@ -28,5 +28,8 @@ class Player
     @board.receive_hit(position)
   end
 
+  def lost?
+    @board.ships.empty?
+  end
 
 end

@@ -4,10 +4,10 @@ require 'player'
   # can place ships /
   # can tell us when a ship is hit /
   # can report hit positions /
-  # can report miss positions / 
-  # will lose if all ships are hit 
+  # can report miss positions /
+  # will lose if all ships are hit
 
-describe Player do 
+describe Player do
 
   # let(:board) {  }
 
@@ -37,12 +37,20 @@ describe Player do
     expect(player.misses).to eq(["A2"])
   end
 
-  it 'can be told when a ship is hit' do 
+  it 'can be told when a ship is hit' do
     board = Board.new
     ship = Ship.new
     player = Player.new
     player.place(ship, "A1")
-    expect(player.receive_hit("A1")).to eq(:hit)
+    expect(player.receive_hit("A1")).to eq(:sunk)
+  end
+
+  it 'tells player they have lost if all ships are hit' do
+    board = Board.new
+    ship = Ship.new
+    player = Player.new
+    player.receive_hit("A1")
+    expect(player.lost?).to eq(true)
   end
 
 end
