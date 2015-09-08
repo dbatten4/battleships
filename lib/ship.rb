@@ -1,7 +1,6 @@
 class Ship
 
-  attr_reader :position
-  attr_accessor :hit
+  attr_accessor :position, :hit 
 
   def initialize(initial_position="A1")
     @position = initial_position

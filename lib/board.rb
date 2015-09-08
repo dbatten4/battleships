@@ -2,6 +2,8 @@ require_relative 'ship'
 
 class Board
 
+  attr_accessor :ships
+
   def initialize
     @ships = []
   end

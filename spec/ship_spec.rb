@@ -1,7 +1,7 @@
 require 'ship'
 
 #   has a position when created /
-#   can be hit
+#   can be hit 
 #   will record number of hits
 #   can be missed
 #   will not be hit when it is missed
@@ -17,6 +17,8 @@ describe Ship do
   it 'should not be initially sunk' do
     expect(subject.hit).to eq(false)
   end
+
+
 
 end
 
