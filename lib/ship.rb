@@ -1,20 +1,17 @@
 class Ship
 
-  attr_accessor :position, :hit
-  attr_reader :hit_counter, :size
+ attr_accessor :position, :hit, :orientation
+ attr_reader :hit_counter, :size_of_ship
 
-  def initialize(initial_position="A1")
-    @position = initial_position
-    @hit = false
-    @hit_counter = 0
-    @size = 1
-  end
+ def initialize
+   @hit_counter = 0
+   @size_of_ship = 1
+   @orientation
+ end
 
-  def get_hit
-    @hit_counter += 1
-    "Sunk!" if hit_counter >= size
-  end
-
+ def get_hit
+   @hit_counter += 1
+ end
 
 
 
@@ -25,28 +22,3 @@ end
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# attr_reader :ship_size
-
-#   def initialize(size=1)
-#     @ship_size = size
-#   end

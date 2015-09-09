@@ -1,28 +1,19 @@
 require 'player'
 
-  # can lose
-  # can place ships /
-  # can tell us when a ship is hit /
-  # can report hit positions /
-  # can report miss positions /
-  # will lose if all ships are hit
-
 describe Player do
 
   # let(:board) {  }
 
-  it { is_expected.to respond_to(:place).with(2).arguments }
+  it { is_expected.to respond_to(:place) } 
 
   it 'can place ship in chosen position' do
-    board = Board.new
     ship = Ship.new
     player = Player.new
-    player.place(ship, "A2")
-    expect(ship.position).to eq("A2")
+    player.place(ship, "A1", :N)
+    expect(ship.position).to eq("A1")
   end
 
   it 'can report hit positions' do
-    board = Board.new
     ship = Ship.new
     player = Player.new
     player.hits = ("A1")
@@ -30,7 +21,6 @@ describe Player do
   end
 
   it 'can report missed positions' do
-    board = Board.new
     ship = Ship.new
     player = Player.new
     player.misses = ("A2")
@@ -38,19 +28,24 @@ describe Player do
   end
 
   it 'can be told when a ship is hit' do
-    board = Board.new
     ship = Ship.new
     player = Player.new
-    player.place(ship, "A1")
-    expect(player.receive_hit("A1")).to eq(:sunk)
+    player.place(ship, "A1", :N)
+    expect(player.receive_hit("A1")).to eq(:all_ships_sunk)
   end
 
   it 'tells player they have lost if all ships are hit' do
-    board = Board.new
     ship = Ship.new
     player = Player.new
     player.receive_hit("A1")
     expect(player.lost?).to eq(true)
+  end
+
+  it 'can report if all ships are sunk' do
+    ship = Ship.new
+    player = Player.new
+    player.place(ship, "A1", :N)
+    expect(player.receive_hit("A1")).to eq(:all_ships_sunk)
   end
 
 end
