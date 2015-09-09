@@ -10,7 +10,7 @@ describe Player do
     ship = Ship.new
     player = Player.new
     player.place(ship, "A1", :N)
-    expect(ship.position).to eq("A1")
+    expect(ship.ship_positions).to eq("A1")
   end
 
   it 'can report hit positions' do
